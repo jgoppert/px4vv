@@ -12,11 +12,11 @@ enum {
 };
 
 enum {
-	X_ARMED=1,
-	X_MANUAL=3,
-	X_GUIDED=5,
-	X_AUTO=7,
-	X_SAFETY=9,
+	X_ARMED = 1 << 1,
+	X_MANUAL = 1 << 2,
+	X_GUIDED = 1 << 3,
+	X_AUTO = 1 << 4,
+	X_SAFETY = 1 << 5,
 };
 
 enum {

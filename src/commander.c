@@ -33,10 +33,10 @@ uint16_t command(uint16_t state, uint16_t stimulus) {
 					break;
 			}
 			state = trans_table[i][C_NEW_STATE];
+			if (stimulus == S_DISARM) {
+				assert(state & ~X_ARMED);
+			}
 		}
-	}
-	if (state == X_MANUAL|X_ARMED && stimulus == S_DISARM) {
-		assert(state == X_MANUAL);
 	}
 	return state;
 }
