@@ -1,0 +1,4 @@
+%X -xe2
+%C
+void loginfo(const char * name) {
+}
