@@ -4,6 +4,10 @@ enable_testing()
 
 find_program(VERIFY verify)
 find_program(CBMC cbmc)
+find_program(ASTYLE astyle)
+
+file(GLOB_RECURSE FORMAT_FILES src/*.c src/*.h)
+add_custom_target(format COMMAND ${ASTYLE} ${FORMAT_FILES} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 project(px4vv C)
 

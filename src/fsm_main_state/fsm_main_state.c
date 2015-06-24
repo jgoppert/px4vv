@@ -16,12 +16,12 @@ enum { // table columns
     T_NUM = 4,
 };
 
-enum { TRANS_NUM = 1};
+enum { TRANS_NUM = 2};
 
 static long int main_state_trans_table[TRANS_NUM][T_NUM] = {
-    {   MAIN_STATE_MANUAL, MAIN_STATE_AUTO_MISSION,
+    {   MAIN_STATE_ANY, MAIN_STATE_AUTO_MISSION,
         STAT_GLOBAL_POSITION_VALID, 0
-    }
+    },
 };
 
 /**
@@ -39,7 +39,8 @@ main_state_t fsm_main_state_update(main_state_t state,
         main_state_t tbl_state = main_state_trans_table[i][T_STATE];
         main_state_t tbl_request = main_state_trans_table[i][T_REQUEST];
         status_t tbl_status_guard = main_state_trans_table[i][T_STATUS_GUARD];
-        if (	(state == tbl_state) &&
+        if (	((state == tbl_state) ||
+                 tbl_state == MAIN_STATE_ANY) &&
                 (request == tbl_request) &&
                 (status & tbl_status_guard)) {
             state = tbl_request;
