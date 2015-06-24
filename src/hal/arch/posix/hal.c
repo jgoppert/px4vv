@@ -1,4 +1,4 @@
-#include "hal.h"
+#include <hal/hal.h>
 
 #include <stdarg.h>
 #include <stdio.h>
