@@ -11,7 +11,7 @@ add_test(test_run_fsm_main test_fsm_main_state
 
 add_test(test_cbmc_fsm_main_state ${CBMC}
 	-I${CMAKE_CURRENT_SOURCE_DIR}
-	--function fsm_main_state_update
+	#--function fsm_main_state_update
 	--bounds-check
 	--arrays-uf-never 
 	--div-by-zero-check
@@ -24,7 +24,7 @@ add_test(test_cbmc_fsm_main_state ${CBMC}
 	#--cover-assertions
 	--beautify
 	${CMAKE_CURRENT_SOURCE_DIR}/fsm_main_state.c
-	#${CMAKE_CURRENT_SOURCE_DIR}/test_fsm_main_state.c
+	${CMAKE_CURRENT_SOURCE_DIR}/test_fsm_main_state.c
 	)
 
 #add_test(fsm_main_state_spin ${VERIFY}
