@@ -1,7 +1,7 @@
-#include <hal/hal.h>
-
 #include <stdarg.h>
 #include <stdio.h>
+
+#include <px4/hal/hal.h>
 
 void loginfo(const char *fmt, ...)
 {

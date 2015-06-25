@@ -1,10 +1,28 @@
 cmake_minimum_required(VERSION 2.5)
 
+project(px4vv C)
+
 enable_testing()
 
 find_program(VERIFY verify)
 find_program(CBMC cbmc)
 find_program(ASTYLE astyle)
+
+set(CBMC_ARGS
+	-I${CMAKE_SOURCE_DIR}/include
+	#--function fsm_main_state_update
+	--bounds-check
+	--arrays-uf-never 
+	--div-by-zero-check
+	--pointer-check
+	--signed-overflow-check
+	--unsigned-overflow-check
+	--nan-check
+	#--all-properties
+	#--show-properties
+	#--cover-assertions
+	--beautify
+	)
 
 file(GLOB_RECURSE FORMAT_FILES src/*.c src/*.h)
 add_custom_target(format COMMAND ${ASTYLE}
@@ -30,13 +48,10 @@ add_custom_target(format COMMAND ${ASTYLE}
 	${FORMAT_FILES}
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-project(px4vv C)
-
-set(CMAKE_C_FLAGS "-g")
-
-include_directories(src)
+include_directories(include)
 
 add_subdirectory(src/hal/arch/posix)
 
-add_subdirectory(src/fsm_main_state)
+add_subdirectory(src/commander/fsm_main_state)
 
+include(CPack)

@@ -1,19 +1,3 @@
-set(CBMC_ARGS
-	-I${CMAKE_CURRENT_SOURCE_DIR}
-	#--function fsm_main_state_update
-	--bounds-check
-	--arrays-uf-never 
-	--div-by-zero-check
-	--pointer-check
-	--signed-overflow-check
-	--unsigned-overflow-check
-	--nan-check
-	#--all-properties
-	#--show-properties
-	#--cover-assertions
-	--beautify
-	)
-
 add_library(fsm_main_state STATIC fsm_main_state.c)
 
 add_executable(test_fsm_main_state_auto_mission test_fsm_main_state_auto_mission.c)

@@ -1,7 +1,7 @@
 #include <inttypes.h>
-#include "fsm_main_state.h"
-
 #include <assert.h>
+
+#include <px4/commander/fsm_main_state.h>
 
 /**
  * Private Data Section
@@ -91,7 +91,9 @@ main_state_t fsm_main_state_update(main_state_t state,
 		    ((arming_state == tbl_arming_guard) ||
 			 tbl_arming_guard == ARMING_STATE_ANY) &&
 		    ((vehicle_type == tbl_vehicle_type_guard) ||
-			 tbl_vehicle_type_guard == VEHICLE_TYPE_ANY)
+			 tbl_vehicle_type_guard == VEHICLE_TYPE_ANY) &&
+		    ((rc_in_mode == tbl_rc_in_guard) ||
+			 tbl_rc_in_guard == RC_IN_MODE_ANY)
 		   ) { 
 
 			state = tbl_request;
