@@ -77,6 +77,5 @@ The following tests FAILED:
 	  3 - test_run_fsm_main_state_intentional_failure (OTHER_FAULT)
 	  4 - test_cbmc_fsm_main_state_intentional_failure (Failed)
 Errors while running CTest
-~/git/px4vv/build$ ctest -V > output 
 ```
 
