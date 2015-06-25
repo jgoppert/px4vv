@@ -53,5 +53,6 @@ include_directories(include)
 add_subdirectory(src/hal/arch/posix)
 
 add_subdirectory(src/commander/fsm_main_state)
+add_subdirectory(src/commander/fsm_arming_state)
 
 include(CPack)

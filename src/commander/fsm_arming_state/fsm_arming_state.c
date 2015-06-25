@@ -1,7 +1,7 @@
 #include <inttypes.h>
 #include <assert.h>
 
-#include <uORB/vehicle_status.h>
+#include <px4/uORB/vehicle_status.h>
 
 /**
  * Private Data Section
@@ -57,7 +57,7 @@ arming_state_t fsm_arming_state_update(
 		    (request == tbl_request) &&
 		    ((status & tbl_status_guard) == tbl_status_guard) &&
 		    ((rc_in_mode == tbl_rc_in_guard) ||
-			 tbl_rc_in_guard == T_RC_IN_MODE_ANY)
+			 tbl_rc_in_guard == RC_IN_MODE_ANY)
 		   ) { 
 			state = tbl_request;
 			break;
