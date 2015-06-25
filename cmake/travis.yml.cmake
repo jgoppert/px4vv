@@ -36,7 +36,7 @@ addons:
     # ** specific to your project **
     project:
       name: jgoppert/px4vv
-      version: 0.1.0
+	  version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
       description: PX4 + Model Checking
 
     # Where email notification of build analysis results will be sent

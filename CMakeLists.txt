@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 2.5)
 
+set(VERSION_MAJOR "0")
+set(VERSION_MINOR "1")
+set(VERSION_PATCH "0")
+
 project(px4vv C)
 
 enable_testing()
@@ -75,4 +79,9 @@ add_test(NAME test_static_analysis
 	COMMAND ${SCANBUILD} make
 	WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
+configure_file(cmake/travis.yml.cmake .travis.yml)
+
+set(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
 include(CPack)
