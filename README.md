@@ -8,13 +8,11 @@ This could result in a new codebase written in C or some of the functions develo
 
 ###Dependencies:
 
-Linux:
-
 #### CBMC
 
 http://www.cprover.org/cbmc/
 
-Example for 64-bit linux:
+Example dependencies install for linux:
 ```bash
 sudo apt-get install cmake cbmc
 mkdir build
