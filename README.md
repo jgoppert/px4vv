@@ -22,6 +22,7 @@ cd build
 cmake ..
 make
 ```
+## Example
 
 You can run the built in testing and model checking suite as follow:
 ```bash
