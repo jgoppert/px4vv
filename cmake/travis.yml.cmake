@@ -36,7 +36,7 @@ addons:
     # ** specific to your project **
     project:
       name: jgoppert/px4vv
-	  version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+      version: @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
       description: PX4 + Model Checking
 
     # Where email notification of build analysis results will be sent
@@ -54,3 +54,5 @@ addons:
     # Take care in resource usage, and consider the build frequency allowances per
     #   https://scan.coverity.com/faq#frequency
     branch_pattern: coverity_scan
+
+# vim: set et fenc= ff=unix sts=0 sw=2 ts=2 :
