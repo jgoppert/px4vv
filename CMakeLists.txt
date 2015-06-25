@@ -7,6 +7,18 @@ enable_testing()
 find_program(VERIFY verify)
 find_program(CBMC cbmc)
 find_program(ASTYLE astyle)
+find_program(SCANBUILD scan-build)
+
+add_custom_command(OUTPUT cbmc-5-1-linux-64.tgz
+	COMMAND wget http://www.cprover.org/cbmc/download/cbmc-5-1-linux-64.tgz)
+
+add_custom_command(OUTPUT cbmc
+	COMMAND tar xfz cbmc-5-1-linux-64.tgz
+	DEPENDS cbmc-5-1-linux-64.tgz)
+
+add_custom_target(cbmc_install
+	sudo cp cbmc /usr/local/bin
+	DEPENDS cbmc)
 
 set(CBMC_ARGS
 	-I${CMAKE_SOURCE_DIR}/include
@@ -54,5 +66,9 @@ add_subdirectory(src/hal/arch/posix)
 
 add_subdirectory(src/commander/fsm_main_state)
 add_subdirectory(src/commander/fsm_arming_state)
+
+add_test(NAME test_static_analysis
+	COMMAND ${SCANBUILD} make
+	WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 include(CPack)

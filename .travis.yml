@@ -7,7 +7,7 @@ install:
     sudo apt-get install cmake cbmc
 
 script:
-    mkdir build && cd build && cmake .. && make && ctest -V
+    mkdir -p build && cd build && cmake .. && make cbmc_install && make && ctest -V
 
 #after_success:
 
