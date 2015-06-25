@@ -1,5 +1,7 @@
 # PX4 verification and validation version
 
+[![Build Status](https://travis-ci.org/jgoppert/px4vv.svg)](https://travis-ci.org/jgoppert/px4vv)
+
 This is a prototype codebase for a platform indepdent px4 compatible autopilot that is verified with the CBMC model checker. Note that CBMC is simpler with the C language instead of C++, so I'm rewriting the chunks of the code by hand in C for now.
 
 This could result in a new codebase written in C or some of the functions developed here could be pulled back into the main codebase written in C and C++ as V&V version of the current modules.
