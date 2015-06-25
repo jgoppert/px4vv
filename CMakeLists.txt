@@ -9,7 +9,7 @@ project(px4vv C)
 enable_testing()
 
 
-option(COVERALLS "Turn on coveralls support" ON)
+option(COVERALLS "Turn on coveralls support" OFF)
 option(COVERALLS_UPLOAD "Upload the generated coveralls json" ON)
 option(DOWNLOAD_CBMC "Download CBMC" ON)
 
