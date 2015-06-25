@@ -9,15 +9,15 @@ install:
 script:
     mkdir build && cd build && cmake .. && make && cest -V
 
-after_success:
+#after_success:
 
-after_failure:
+#after_failure:
 
-after_script:
+#after_script:
 
-before_deploy:
+#before_deploy:
+    #cd build && cpack
 
-deploy:
-    cd build && cpack
+#deploy:
 
-after_deploy:
+#after_deploy:
