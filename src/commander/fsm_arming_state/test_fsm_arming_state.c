@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <inttypes.h>
 
-#include <px4/commander/fsm_main_state.h>
+#include <px4/commander/fsm_arming_state.h>
 
 int main(int argc, char *argv[])
 {

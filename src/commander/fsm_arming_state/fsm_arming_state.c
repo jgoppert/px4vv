@@ -34,7 +34,7 @@ static long int arming_state_trans_table[TRANS_NUM][T_NUM] = {
  * */
 
 /**
- * Runs the main state transition table.
+ * Runs the arming state transition table.
  */
 arming_state_t fsm_arming_state_update(
 		arming_state_t state,
