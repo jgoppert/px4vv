@@ -7,7 +7,7 @@ install:
   - sudo apt-get install cmake clang
 
 script:
-  - mkdir build && cd build && cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && make && make coveralls
+  - mkdir build && cd build && cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && make && ctest -V && make coveralls
 
 #after_success:
 
