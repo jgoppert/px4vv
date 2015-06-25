@@ -21,7 +21,7 @@ enum { // table columns
 enum { TRANS_NUM = 3};
 static long int arming_state_trans_table[TRANS_NUM][T_NUM] = {
 	{
-		// rule 0
+		// rule 0 TODO, safety switch as stat?
 		ARMING_STATE_ANY, ARMING_STATE_ARMED,
 		STAT_GLOBAL_POSITION_VALID,
 		RC_IN_MODE_ANY,
