@@ -8,12 +8,24 @@ project(px4vv C)
 
 enable_testing()
 
+
+option(COVERALLS "Turn on coveralls support" ON)
+option(COVERALLS_UPLOAD "Upload the generated coveralls json" ON)
+option(DOWNLOAD_CBMC "Download CBMC" ON)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} 
+	${CMAKE_SOURCE_DIR}/cmake/coveralls-cmake/cmake)
+
+if (COVERALLS)
+	include(Coveralls)
+	coveralls_turn_on_coverage()
+endif()
+
 # not using spin, modex doesn't support enum
 #find_program(VERIFY verify)
 find_program(ASTYLE astyle)
 find_program(SCANBUILD scan-build)
 
-option(DOWNLOAD_CBMC "Download CBMC" ON)
 
 if (DOWNLOAD_CBMC)
 	set(CBMC_LINUX64_TARBALL cbmc-5-1-linux-64.tgz)
@@ -69,6 +81,21 @@ add_custom_target(format COMMAND ${ASTYLE}
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 include_directories(include)
+
+set(COV_SRCS
+	${CMAKE_SOURCE_DIR}/src/commander/fsm_arming_state/fsm_arming_state.c
+	${CMAKE_SOURCE_DIR}/src/commander/fsm_main_state/fsm_main_state.c
+	)
+
+# Setup the coveralls target and tell it to gather
+# coverage data for all the lib sources.
+if (COVERALLS)
+	coveralls_setup(
+		"${COV_SRCS}"
+        ${COVERALLS_UPLOAD}                 
+		"${CMAKE_SOURCE_DIR}/cmake/coveralls-cmake/cmake"
+		)
+endif()
 
 add_subdirectory(src/hal/arch/posix)
 

@@ -1,13 +1,13 @@
 language: c
 
 before_install:
-    sudo apt-get update
+  - sudo apt-get update
 
 install:
-    sudo apt-get install cmake clang
+  - sudo apt-get install cmake clang
 
 script:
-    mkdir -p build && cd build && cmake .. && make && ctest -V
+  - mkdir build && cd build && cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && make && make coveralls
 
 #after_success:
 
