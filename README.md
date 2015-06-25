@@ -22,6 +22,19 @@ make
 ```
 ## Example
 
+Transition rules are written in a human readable form in the source code, for instance:
+
+```c
+// rule 0
+MAIN_STATE_ANY,  // current state
+MAIN_STATE_AUTO_MISSION, // requested state
+STAT_GLOBAL_POSITION_VALID,  // status conditions guard
+NAVIGATION_STATE_ANY,  // gnavigation state guard
+ARMING_STATE_ARMED,  // arming state guard
+VEHICLE_TYPE_ANY, // vehicle type guard
+RC_IN_MODE_ANY, // rc in mode guard
+```
+
 You can run the built in testing and model checking suite as follow:
 ```bash
 ~/git/px4vv/build$ ctest
