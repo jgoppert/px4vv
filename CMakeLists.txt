@@ -4,21 +4,25 @@ project(px4vv C)
 
 enable_testing()
 
-find_program(VERIFY verify)
-find_program(CBMC cbmc)
+# not using spin, modex doesn't support enum
+#find_program(VERIFY verify)
 find_program(ASTYLE astyle)
 find_program(SCANBUILD scan-build)
 
-add_custom_command(OUTPUT cbmc-5-1-linux-64.tgz
-	COMMAND wget http://www.cprover.org/cbmc/download/cbmc-5-1-linux-64.tgz)
+option(DOWNLOAD_CBMC "Download CBMC" ON)
 
-add_custom_command(OUTPUT cbmc
-	COMMAND tar xfz cbmc-5-1-linux-64.tgz
-	DEPENDS cbmc-5-1-linux-64.tgz)
-
-add_custom_target(cbmc_install
-	sudo cp cbmc /usr/local/bin
-	DEPENDS cbmc)
+if (DOWNLOAD_CBMC)
+	set(CBMC_LINUX64_TARBALL cbmc-5-1-linux-64.tgz)
+	add_custom_command(OUTPUT ${CBMC_LINUX64_TARBALL} 
+		COMMAND wget http://www.cprover.org/cbmc/download/${CBMC_LINUX64_TARBALL})
+	add_custom_command(OUTPUT cbmc
+		COMMAND tar xfz ${CBMC_LINUX64_TARBALL}
+		DEPENDS ${CBMC_LINUX64_TARBALL})
+	add_custom_target(cbmc_bin ALL DEPENDS cbmc)
+	set(CBMC ${CMAKE_BINARY_DIR}/cbmc)
+else()
+	find_program(CBMC cbmc)
+endif()
 
 set(CBMC_ARGS
 	-I${CMAKE_SOURCE_DIR}/include
