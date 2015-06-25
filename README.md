@@ -25,14 +25,47 @@ make
 Transition rules are written in a human readable form in the source code, for instance:
 
 ```c
-// rule 0
-MAIN_STATE_ANY,  // current state
-MAIN_STATE_AUTO_MISSION, // requested state
-STAT_GLOBAL_POSITION_VALID,  // status conditions guard
-NAVIGATION_STATE_ANY,  // gnavigation state guard
-ARMING_STATE_ARMED,  // arming state guard
-VEHICLE_TYPE_ANY, // vehicle type guard
-RC_IN_MODE_ANY, // rc in mode guard
+
+enum { // table columns
+	T_STATE = 0, // current vehicle state
+	T_REQUEST, // requested vehicle state
+	T_STATUS_GUARD, // guard conditions
+	T_NAVIGATION_GUARD,
+	T_ARMING_GUARD,
+	T_VEHICLE_TYPE_GUARD,
+	T_RC_IN_GUARD,
+	T_NUM,
+};
+
+static long int main_state_trans_table[TRANS_NUM][T_NUM] = {
+	{
+		// rule 0
+		MAIN_STATE_ANY, MAIN_STATE_AUTO_MISSION,
+		STAT_GLOBAL_POSITION_VALID,
+		NAVIGATION_STATE_ANY,
+		ARMING_STATE_ARMED,
+		VEHICLE_TYPE_ANY,
+		RC_IN_MODE_ANY,
+	},
+	{
+		// rule 1
+		MAIN_STATE_ANY, MAIN_STATE_AUTO_RTL,
+		STAT_GLOBAL_POSITION_VALID | STAT_HOME_POSITION_VALID,
+		NAVIGATION_STATE_ANY,
+		ARMING_STATE_ARMED,
+		VEHICLE_TYPE_ANY,
+		RC_IN_MODE_ANY,
+	},
+	{
+		// rule 2
+		MAIN_STATE_ANY, MAIN_STATE_AUTO_RTL,
+		STAT_GLOBAL_POSITION_VALID | STAT_HOME_POSITION_VALID,
+		NAVIGATION_STATE_ANY,
+		ARMING_STATE_ARMED,
+		VEHICLE_TYPE_ANY,
+		RC_IN_MODE_ANY,
+	},
+};
 ```
 
 You can run the built in testing and model checking suite as follow:
