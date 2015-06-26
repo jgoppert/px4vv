@@ -37,10 +37,10 @@ static long int arming_state_trans_table[TRANS_NUM][T_NUM] = {
  * Runs the arming state transition table.
  */
 arming_state_t fsm_arming_state_update(
-		arming_state_t state,
-		arming_state_t request,
-		status_t status,
-		rc_in_mode_t rc_in_mode)
+	arming_state_t state,
+	arming_state_t request,
+	status_t status,
+	rc_in_mode_t rc_in_mode)
 {
 	int i = 0;
 
@@ -57,8 +57,8 @@ arming_state_t fsm_arming_state_update(
 		    (request == tbl_request) &&
 		    ((status & tbl_status_guard) == tbl_status_guard) &&
 		    ((rc_in_mode == tbl_rc_in_guard) ||
-			 tbl_rc_in_guard == RC_IN_MODE_ANY)
-		   ) { 
+		     tbl_rc_in_guard == RC_IN_MODE_ANY)
+		   ) {
 			state = tbl_request;
 			break;
 		}

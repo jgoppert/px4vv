@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 		       ARMING_STATE_STANDBY,
 		       ARMING_STATE_ARMED,
 		       STAT_GLOBAL_POSITION_VALID,
-			   RC_IN_MODE_DEFAULT)
+		       RC_IN_MODE_DEFAULT)
 	       == ARMING_STATE_ARMED);
 	return 0;
 }

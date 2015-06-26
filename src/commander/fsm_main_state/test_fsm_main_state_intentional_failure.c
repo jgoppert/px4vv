@@ -11,10 +11,10 @@ int main(int argc, char *argv[])
 		       MAIN_STATE_MANUAL,
 		       MAIN_STATE_AUTO_RTL,
 		       STAT_GLOBAL_POSITION_VALID,
-			   NAVIGATION_STATE_ANY,
-			   ARMING_STATE_ARMED,
-			   VEHICLE_TYPE_FIXED_WING,
-			   RC_IN_MODE_DEFAULT)
+		       NAVIGATION_STATE_ANY,
+		       ARMING_STATE_ARMED,
+		       VEHICLE_TYPE_FIXED_WING,
+		       RC_IN_MODE_DEFAULT)
 	       == MAIN_STATE_AUTO_RTL);
 	return 0;
 }

@@ -43,6 +43,7 @@ endif()
 set(CBMC_ARGS
 	-I${CMAKE_SOURCE_DIR}/include
 	#--function fsm_main_state_update
+	--unwind 5
 	--bounds-check
 	--arrays-uf-never 
 	--div-by-zero-check
@@ -99,6 +100,7 @@ endif()
 
 add_subdirectory(src/hal/arch/posix)
 
+add_subdirectory(src/fsm)
 add_subdirectory(src/commander/fsm_main_state)
 add_subdirectory(src/commander/fsm_arming_state)
 

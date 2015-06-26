@@ -87,14 +87,14 @@ main_state_t fsm_main_state_update(main_state_t state,
 		    (request == tbl_request) &&
 		    ((status & tbl_status_guard) == tbl_status_guard) &&
 		    ((nav_state == tbl_nav_guard) ||
-			 tbl_nav_guard == NAVIGATION_STATE_ANY) &&
+		     tbl_nav_guard == NAVIGATION_STATE_ANY) &&
 		    ((arming_state == tbl_arming_guard) ||
-			 tbl_arming_guard == ARMING_STATE_ANY) &&
+		     tbl_arming_guard == ARMING_STATE_ANY) &&
 		    ((vehicle_type == tbl_vehicle_type_guard) ||
-			 tbl_vehicle_type_guard == VEHICLE_TYPE_ANY) &&
+		     tbl_vehicle_type_guard == VEHICLE_TYPE_ANY) &&
 		    ((rc_in_mode == tbl_rc_in_guard) ||
-			 tbl_rc_in_guard == RC_IN_MODE_ANY)
-		   ) { 
+		     tbl_rc_in_guard == RC_IN_MODE_ANY)
+		   ) {
 
 			state = tbl_request;
 			break;
