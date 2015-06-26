@@ -8,7 +8,6 @@ project(px4vv C)
 
 enable_testing()
 
-
 option(COVERALLS "Turn on coveralls support" OFF)
 option(COVERALLS_UPLOAD "Upload the generated coveralls json" ON)
 option(DOWNLOAD_CBMC "Download CBMC" ON)
@@ -26,7 +25,6 @@ endif()
 find_program(ASTYLE astyle)
 find_program(SCANBUILD scan-build)
 
-
 if (DOWNLOAD_CBMC)
 	set(CBMC_LINUX64_TARBALL cbmc-5-1-linux-64.tgz)
 	add_custom_command(OUTPUT ${CBMC_LINUX64_TARBALL} 
@@ -43,7 +41,7 @@ endif()
 set(CBMC_ARGS
 	-I${CMAKE_SOURCE_DIR}/include
 	#--function fsm_main_state_update
-	--unwind 5
+	--unwind 4
 	--bounds-check
 	--arrays-uf-never 
 	--div-by-zero-check
